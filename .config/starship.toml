@@ -1,0 +1,78 @@
+# Full path: ~/.config/starship.toml
+# Starship configuration optimized for TS/Node/Go development
+
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+# Replace the "❯" symbol with "➜" as the prompt character
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[✗](bold red)"
+vimcmd_symbol = "[N](bold blue)"
+
+# Use custom format
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$golang\
+$nodejs\
+$bun\
+$docker_context\
+$line_break\
+$character"""
+
+[directory]
+truncation_length = 8
+truncation_symbol = "…/"
+style = "bold blue"
+
+[git_branch]
+symbol = " "
+truncation_length = 10
+truncation_symbol = "…"
+style = "bold purple"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+conflicted = "🏳"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?${count}"
+stashed = "*${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+style = "bold yellow"
+
+[golang]
+symbol = " "
+style = "bold cyan"
+format = "[$symbol($version )]($style)"
+
+[nodejs]
+symbol = " "
+style = "bold green"
+format = "[$symbol($version )]($style)"
+
+[bun]
+symbol = "🥟 "
+style = "bold yellow"
+format = "[$symbol($version )]($style)"
+
+[docker_context]
+symbol = " "
+style = "blue bold"
+format = "[$symbol$context]($style) "
+only_with_files = true
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+
+[cmd_duration]
+min_time = 500
+format = "[$duration](bold yellow)"

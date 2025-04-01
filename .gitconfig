@@ -1,0 +1,83 @@
+[user]
+    name = Su Thaw
+    email = suthaw524@gmail.com
+
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore_global
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    light = false
+    side-by-side = true
+    line-numbers = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[color]
+    ui = true
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[push]
+    default = current
+
+[fetch]
+    prune = true
+
+[alias]
+    # Basic shortcuts
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
+    cp = cherry-pick
+    
+    # Log formats
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lp = log --patch
+    ll = log --oneline
+    
+    # Branch management
+    brd = branch -d
+    brD = branch -D
+    
+    # Working with remotes
+    r = remote -v
+    
+    # Advanced 
+    unstage = reset HEAD --
+    discard = checkout --
+    uncommit = reset --soft HEAD~1
+    amend = commit --amend
+    
+    # Useful for daily work
+    wip = !git add -A && git commit -m 'WIP: Work in progress [skip ci]'
+    unwip = !git log -n 1 | grep -q -c 'WIP: Work in progress' && git reset HEAD~1
+    
+    # Search in codebase
+    find = !git ls-files | grep -i
+    
+    # Show changes that have been staged
+    staged = diff --cached
+    
+    # List aliases
+    aliases = !git config --get-regexp alias | sed -e 's/^alias\\.//g' | sed -e 's/\\ /\\ =\\ /g' | sort
+    
+    # List contributors with number of commits
+    contributors = shortlog --summary --numbered
+    
+    # Show the last tag
+    last-tag = describe --tags --abbrev=0
