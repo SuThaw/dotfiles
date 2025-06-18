@@ -187,3 +187,6 @@ fi
 
 # Initialize Starship prompt
 eval "$(starship init zsh)"
+
+# Added by Windsurf
+export PATH="/Users/suthaw/.codeium/windsurf/bin:$PATH"
